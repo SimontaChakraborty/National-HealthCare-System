@@ -1,0 +1,94 @@
+﻿@page
+@model National_Healthcare_System.Pages.Doctors.IndexModel
+@using National_Healthcare_System.Utility
+
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h1>Doctors</h1>
+@if ((User.IsInRole(Static_Details.DoctorUser) && (Model.Doctor == null)))
+{
+    <p>
+        <a type="text/plain" class="btn btn-outline-primary" asp-page="./Create">Add My Info</a>
+    </p>
+    <div class="border border-bottom border-primary ">
+
+    </div>
+}
+
+<div class="row p-2">
+    <div class="col-6">
+        <div class="card shadow-sm m-lg-2 rounded-lg border-0 p-2">
+            <div class="card-body">
+                <h5 class="card-title">Doctor Name</h5>
+                <p class="card-text">
+                    <div>
+                        @if (User.IsInRole(Static_Details.AdminUser))
+                        {
+                            <label class="font-weight-bold">Doctor's NID no : </label>
+                            @Html.DisplayFor(modelItem => Model.Doctor.Identity_Number)
+                        }
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Doctor's ID no  :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Doctor_Id)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Doctor Type :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Doctor_Type)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Specialist  :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Specialist)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Registration No :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Registration_Number)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Institution Name    :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Institution_Name)
+                    </div>
+                    @*<div>
+                        <label class="font-weight-bold">Consultation Hours  :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Consultation_Times)
+                    </div>*@
+                    <div>
+                        <label class="font-weight-bold">Consultation Address    :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Consultation_Address)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Consultation Contact    :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Consultation_Contact)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Organization    :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Organization_Id)
+                    </div>
+                    <div>
+                        <label class="font-weight-bold">Verfied?    :</label>
+                        @Html.DisplayFor(modelItem => Model.Doctor.Verified)
+                    </div>
+                </p>
+            </div>
+            <div class="row p-3">
+                @if (User.IsInRole(Static_Details.DoctorUser))
+                {
+                    @try
+                    {
+                        <div class="col-2">
+                            <a type="text/plain" class="btn btn-warning" asp-page="./Edit" asp-route-id="@Model.Doctor.Doctor_Id">Update</a>
+                        </div>
+                        <div class="col-2">
+                            <a type="text/plain" class="btn btn-danger" asp-page="./Delete" asp-route-id="@Model.Doctor.Doctor_Id">Delete</a>
+                        </div>
+                    }
+                    catch { Exception ex; }
+
+                }
+            </div>
+        </div>
+    </div>
+</div>

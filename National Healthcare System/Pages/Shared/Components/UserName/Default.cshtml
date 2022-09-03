@@ -1,0 +1,11 @@
+﻿@model National_Healthcare_System.Models.Users
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+@if (SignInManager.IsSignedIn(User))
+    {
+        @: Hello! @Model.First_Name @Model.Middle_Name @Model.Last_Name<i class=" far fa-user"></i>
+
+    }
+
+
+

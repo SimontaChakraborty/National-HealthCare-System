@@ -1,0 +1,105 @@
+﻿@page
+@model National_Healthcare_System.Pages.Views.ViewDoctorList.IndexModel
+@using National_Healthcare_System.Utility
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Doctors";
+}
+
+<h1>Doctors</h1>
+@if (User.IsInRole(Static_Details.AdminUser))
+{
+    <p>
+        <a type="text/plain" class="btn btn-outline-primary" asp-page="/Doctors/Create">Add New</a>
+    </p>
+    <div class="border border-bottom border-primary ">
+
+    </div>
+}
+
+<div class="row p-2">
+    @foreach (var item in Model.Doctors)
+    {
+        <div class="col-6">
+            <div class="card shadow-sm m-lg-2 rounded-lg border-0 p-2">
+                <div class="card-body">
+                    <h5 class="card-title">Doctor Name</h5>
+                    <p class="card-text">
+                        <div>
+                            @if (User.IsInRole(Static_Details.AdminUser))
+                            {
+                                <label class="font-weight-bold">Doctor's NID no : </label>
+                                @Html.DisplayFor(modelItem => item.Identity_Number)
+                            }
+                        </div>
+                        @*<div>
+                                <label class="font-weight-bold">Doctor Name  :</label>
+                                @Html.DisplayFor(modelItem => item.)
+                            </div>*@
+                        <div>
+                            <label class="font-weight-bold">Doctor's ID no  :</label>
+                            @Html.DisplayFor(modelItem => item.Doctor_Id)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Doctor Type :</label>
+                            @Html.DisplayFor(modelItem => item.Doctor_Type)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Specialist  :</label>
+                            @Html.DisplayFor(modelItem => item.Specialist)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Registration No :</label>
+                            @Html.DisplayFor(modelItem => item.Registration_Number)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Institution Name    :</label>
+                            @Html.DisplayFor(modelItem => item.Institution_Name)
+                        </div>
+                        @*<div>
+                                <label class="font-weight-bold">Consultation Hours  :</label>
+                                @Html.DisplayFor(modelItem => item.Consultation_Times)
+                            </div>*@
+                        <div>
+                            <label class="font-weight-bold">Consultation Address    :</label>
+                            @Html.DisplayFor(modelItem => item.Consultation_Address)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Consultation Contact    :</label>
+                            @Html.DisplayFor(modelItem => item.Consultation_Contact)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Organization    :</label>
+                            @Html.DisplayFor(modelItem => item.Organization_Id)
+                        </div>
+                        <div>
+                            <label class="font-weight-bold">Verfied?    :</label>
+                            @Html.DisplayFor(modelItem => item.Verified)
+                        </div>
+                    </p>
+                </div>
+                <div class="row p-3">
+                    <div class="col-2">
+                        <a type="text/plain" class="btn btn-primary" asp-page="/Doctors/Details" asp-route-id="@item.Doctor_Id">Details</a>
+                    </div>
+                    
+                    <div class="col-6">
+                        <a type="text/plain" class="btn btn-primary" asp-page="/DoctorSchedule/Details" asp-route-id="@item.Doctor_Id">View Schedule</a>
+                    </div>
+                    @if (User.IsInRole(Static_Details.AdminUser))
+                    {
+                        <div class="col-2">
+                            <a type="text/plain" class="btn btn-warning" asp-page="/Doctors/Edit" asp-route-id="@item.Doctor_Id">Update</a>
+                        </div>
+                        <div class="col-2">
+                            <a type="text/plain" class="btn btn-danger" asp-page="/Doctors/Delete" asp-route-id="@item.Doctor_Id">Delete</a>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    }
+</div>
+

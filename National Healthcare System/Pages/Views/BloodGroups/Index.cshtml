@@ -1,0 +1,84 @@
+﻿@page
+@model National_Healthcare_System.Pages.BloodGroups.IndexModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<div class="row">
+    <div class="col-6">
+        <h2 class="text-info">Find Blood</h2>
+    </div>
+</div>
+<form method="get" asp-page="Index">
+    <div class="border backgroundWhite">
+        <div style="height:105px;" class="container border border-secondary">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row" style="padding-top:10px">
+                        <div class="col-4">
+                            <div class="select-picker">
+                                <select class="select-picker form-control" asp-for="searchBloodGroup" id="BloodGroupSelct">
+                                    <option selected>Choose...</option>
+                                    <option value="A +ve">A +ve</option>
+                                    <option value="A -ve">A -ve</option>
+                                    <option value="B +ve">B +ve</option>
+                                    <option value="B -ve">B -ve</option>
+                                    <option value="AB +ve">AB +ve</option>
+                                    <option value="AB -ve">AB -ve</option>
+                                    <option value="O +ve">O +ve</option>
+                                    <option value="O -ve">O -ve</option>
+                                </select><span asp-validation-for="searchBloodGroup" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2" >
+                        <div class="row" style="padding-top:10px; padding-right:15px;">
+                            <button type="submit" name="submit" class="btn btn-info form-control">Search</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br />
+        <div>
+            <table class="table table-striped border">
+                <tr class="table-secondary">
+                    <th>
+                        Frist Name
+                        <!--@Html.DisplayNameFor(m => m.UserList[0].First_Name)-->
+                    </th>
+                    <th>
+                        Phone Number
+                        <!--@Html.DisplayNameFor(m => m.UserList[0].PhoneNumber)-->
+                    </th>
+                    @*<th>
+                        @Html.DisplayNameFor(m => m.UserList[0].Email)
+                    </th>*@
+                    <th>
+                        Blood Group
+                        <!-- @Html.DisplayNameFor(m => m.UserList[0].Blood_Group)-->
+                    </th>
+                </tr>
+                @foreach (var item in Model.UserList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(m => item.First_Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(m => item.PhoneNumber)
+                        </td>
+                        @*<td>
+                            @Html.DisplayFor(m => item.Email)
+                        </td>*@
+                        <td>
+                            @Html.DisplayFor(m => item.Blood_Group)
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</form>

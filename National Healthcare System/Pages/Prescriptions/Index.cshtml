@@ -1,0 +1,54 @@
+﻿@page
+@model National_Healthcare_System.Pages.Prescriptions.IndexModel
+@using National_Healthcare_System.Utility
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (!User.IsInRole(Static_Details.PatientUser))
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                <label asp-for="Prescription.FirstOrDefault().Prescription_Id"></label>
+            </th>
+            <th>
+                <label asp-for="Prescription.FirstOrDefault().Consultation_Id">Consultation Id</label>
+            </th>
+            <th>
+                <label asp-for="Prescription.FirstOrDefault().Comments"></label>
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Prescription)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prescription_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Consultation_Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Comments)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Prescription_Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Prescription_Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Prescription_Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

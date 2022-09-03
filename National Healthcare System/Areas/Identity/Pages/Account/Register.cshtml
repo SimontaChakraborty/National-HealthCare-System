@@ -1,0 +1,358 @@
+﻿@page
+@model RegisterModel
+@using National_Healthcare_System.Utility
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+<h2 class=" text-info pt-2 pb-3"> Create A New Account </h2>
+
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<div class="row backgroundWhite border-top p-3">
+    <div class="col-md-10">
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="accordion md-accordion" id="accordionEx" role="tablist" aria-multiselectable="true">
+                <div class="card">
+                    <div class="card-header bg-transparent" role="tab" id="headingOne1">
+                        <div data-toggle="collapse" data-parent="#accordionEx" href="#collapseOne1" aria-expanded="true"
+                             aria-controls="collapseOne1">
+                            <h5 class="mb-0 text-primary">
+                                Personal Information<i class="fas fa-angle-down float-md-right rotate-icon"></i>
+                            </h5>
+                        </div>
+                    </div>
+                    <div id="collapseOne1" class="collapse" role="tabpanel" aria-labelledby="headingOne1" data-parent="#accordionEx">
+                        <div class="card-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.First_Name"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.First_Name" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.First_Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Middle_Name"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Optional" asp-for="Input.Middle_Name" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Middle_Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Last_Name"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Last_Name" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Last_Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.ProfileImage"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.ProfileImage" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.ProfileImage" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Fathers_Name "></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Fathers_Name" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Fathers_Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Father_NID_Number "></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Optional" asp-for="Input.Father_NID_Number" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Father_NID_Number" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Mothers_Name "></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Mothers_Name" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Mothers_Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Mother_NID_Number "></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Optional" asp-for="Input.Mother_NID_Number" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Mother_NID_Number" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.DateOFBirth"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input type="date" asp-for="Input.DateOFBirth" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.DateOFBirth" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Gender"></label>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="select-picker">
+                                            <select class="select-picker form-control my-1 mr-sm-2" asp-for="Input.Gender" id="GenderSelect">
+                                                <option selected>Choose...</option>
+                                                <option value="Male">Male</option>
+                                                <option value="Female">Female</option>
+                                                <option value="Third">Third</option>
+                                                <option value="Other">Other</option>
+                                            </select><span asp-validation-for="Input.Gender" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Blood_Group"></label>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="select-picker">
+                                            <select class="select-picker form-control my-1 mr-sm-2" asp-for="Input.Blood_Group" id="BloodGroupSelct">
+                                                <option selected>Choose...</option>
+                                                <option value="A +ve">A +ve</option>
+                                                <option value="A -ve">A -ve</option>
+                                                <option value="B +ve">B +ve</option>
+                                                <option value="B -ve">B -ve</option>
+                                                <option value="AB +ve">AB +ve</option>
+                                                <option value="AB -ve">AB -ve</option>
+                                                <option value="O +ve">O +ve</option>
+                                                <option value="O -ve">O -ve</option>
+                                            </select><span asp-validation-for="Input.Blood_Group" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Occupation"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Occupation" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Occupation" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Maritual_status"></label>
+                                    </div>
+                                    <div class="col-8">
+                                        <div class="select-picker">
+                                            <select class="select-picker form-control my-1 mr-sm-2" asp-for="Input.Maritual_status" id="MaritualStatusSelect">
+                                                <option selected>Choose...</option>
+                                                <option value="Married">Married</option>
+                                                <option value="Unmarried">Unmarried</option>
+                                                <option value="Divorced">Divorced</option>
+                                                <option value="Other">Other</option>
+                                            </select><span asp-validation-for="Input.Maritual_status" class="text-danger"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-transparent" role="tab" id="headingTwo2">
+                        <div class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseTwo2"
+                             aria-expanded="false" aria-controls="collapseTwo2">
+                            <h5 class="mb-0 text-primary">
+                                Identity and Contact Information <i class="fas fa-angle-down float-md-right rotate-icon"></i>
+                            </h5>
+                        </div>
+                    </div>
+                    <div id="collapseTwo2" class="collapse" role="tabpanel" aria-labelledby="headingTwo2" data-parent="#accordionEx">
+                        <div class="card-body">
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Identity_Number"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Optional" asp-for="Input.Identity_Number" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Identity_Number" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Email"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Email" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Phone_Number">Phone Number</label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" type="number" asp-for="Input.Phone_Number" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Phone_Number" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Permanent_Address"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Optional" asp-for="Input.Permanent_Address" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Permanent_Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Current_Address"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.Current_Address" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Current_Address" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.City"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Required" asp-for="Input.City" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.City" class="text-danger"></span>
+                                </div>
+                            </div>
+                            @if (User.IsInRole(Static_Details.AdminUser))
+                            {
+                                <div class=" form-group">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <div>
+                                                <label asp-for="Input.isOrg">Org Employee?</label>
+                                            </div>
+                                        </div>
+                                        <div class="col-2">
+                                            <input type="checkbox" asp-for="Input.isOrg" class="form-check-inline" />
+                                        </div>
+                                        <span asp-validation-for="Input.isOrg" class="text-danger"></span>
+                                        <div class="col-md-2">
+                                            <div>
+                                                <label asp-for="Input.isAdmin">Admin?</label>
+                                            </div>
+                                        </div>
+                                        <div class=" col-4">
+                                            <input type="checkbox" asp-for="Input.isAdmin" class="form-check-inline" />
+                                        </div>
+                                        <span asp-validation-for="Input.isAdmin" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-header bg-transparent" role="tab" id="headingThree3">
+                        <div class="collapsed" data-toggle="collapse" data-parent="#accordionEx" href="#collapseThree3"
+                             aria-expanded="true" aria-controls="collapseThree3">
+                            <h5 class="mb-0 text-primary">
+                                Set Password <i class="fas fa-angle-down float-md-right rotate-icon"></i>
+                            </h5>
+                        </div>
+                    </div>
+                    <div id="collapseThree3" class="collapse" role="tabpanel" aria-labelledby="headingThree3" data-parent="#accordionEx">
+                        <div class="card-body">
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.Password"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="At Least 6 Charecters; e.g: A#a2" asp-for="Input.Password" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class=" form-group">
+                                <div class="row">
+                                    <div class="col-4">
+                                        <label asp-for="Input.ConfirmPassword"></label>
+                                    </div>
+                                    <div class=" col-8">
+                                        <input placeholder="Re-enter Password" asp-for="Input.ConfirmPassword" class="form-control" />
+                                    </div>
+                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-4">
+                </div>
+                <div class=" col-8 p-3">
+                    <button type="submit" class="btn btn-success form-control">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

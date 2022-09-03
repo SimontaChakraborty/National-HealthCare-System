@@ -1,0 +1,80 @@
+﻿@page
+@model National_Healthcare_System.Pages.Diagnostics.IndexModel
+@using National_Healthcare_System.Utility
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (User.IsInRole(Static_Details.OrgUser))
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].DateOfDiagnose)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].Diagnostic_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].Diagnostics)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].Organization_Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].Comments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Diagnostic[0].Consultation_Id)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Diagnostic)
+        {
+        <tr>
+            <td>
+                <img src="~/Diagimages/@item.Image.ToString()" height="200" width="200" alt="Diagnostics Picture" asp-append-version="true" />
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfDiagnose)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostic_Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Diagnostics)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Organization_Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Comments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Consultation_Id)
+            </td>
+            <td>
+                <a asp-page="./Details" asp-route-id="@item.Diagnostic_Id" class="btn btn-primary" >Details</a>
+            </td>
+            @if (!User.IsInRole(Static_Details.PatientUser) || !User.IsInRole(Static_Details.PatientUser))
+            {
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Diagnostic_Id" class="btn btn-warning">Edit</a>
+                    <a asp-page="./Delete" asp-route-id="@item.Diagnostic_Id" class="btn btn-danger">Delete</a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>

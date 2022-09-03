@@ -1,0 +1,64 @@
+﻿@page
+@model National_Healthcare_System.Pages.Diagnostics.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Diagnostic</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.DateOfDiagnose" class="control-label"></label>
+                <input asp-for="Diagnostic.DateOfDiagnose" class="form-control" />
+                <span asp-validation-for="Diagnostic.DateOfDiagnose" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.Diagnostic_Type" class="control-label"></label>
+                <input asp-for="Diagnostic.Diagnostic_Type" class="form-control" />
+                <span asp-validation-for="Diagnostic.Diagnostic_Type" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.Diagnostics" class="control-label"></label>
+                <input asp-for="Diagnostic.Diagnostics" class="form-control" />
+                <span asp-validation-for="Diagnostic.Diagnostics" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.Organization_Id" class="control-label"></label>
+                <input asp-for="Diagnostic.Organization_Id" class="form-control" />
+                <span asp-validation-for="Diagnostic.Organization_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.Comments" class="control-label"></label>
+                <input asp-for="Diagnostic.Comments" class="form-control" />
+                <span asp-validation-for="Diagnostic.Comments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Diagnostic.Consultation_Id" class="control-label"></label>
+                <input asp-for="Diagnostic.Consultation_Id" class="form-control" />
+                <span asp-validation-for="Diagnostic.Consultation_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+          
+                <input asp-for="Input.DigImage" class="form-control" />
+                <span asp-validation-for="Input.DigImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

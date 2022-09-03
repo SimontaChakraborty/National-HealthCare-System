@@ -1,0 +1,71 @@
+﻿@page
+@model National_Healthcare_System.Pages.DoctorSchedule.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Doctor_Schedule</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Doctor_Schedule.Doctor_Id" class="control-label"></label>
+                <input asp-for="Doctor_Schedule.Doctor_Id" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.Doctor_Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                @*<label asp-for="Doctor_Schedule.Day" class="control-label"></label>
+                <input asp-for="Doctor_Schedule.Day" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.Day" class="text-danger"></span>*@
+                <div class="select-picker">
+                    <select class="select-picker form-control" asp-for="Doctor_Schedule.Day" id="WeekDaySelect">
+                        <option selected>Choose...</option>
+                        <option value="Satuday">Saturday</option>
+                        <option value="Sunday">Sunday</option>
+                        <option value="Monday">Monday</option>
+                        <option value="Tuesday">Tuesday</option>
+                        <option value="Wednesday">Wednesday</option>
+                        <option value="Thursday">Thursday</option>
+                        <option value="Friday">Friday</option>
+                    </select><span asp-validation-for="Doctor_Schedule.Day" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Schedule.Start_Time" class="control-label"></label>
+                <input type="time" asp-for="Doctor_Schedule.Start_Time" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.Start_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Schedule.End_Time" class="control-label"></label>
+                <input type="time" asp-for="Doctor_Schedule.End_Time" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.End_Time" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Schedule.Organization_Name" class="control-label"></label>
+                <input asp-for="Doctor_Schedule.Organization_Name" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.Organization_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctor_Schedule.Chamber_Address" class="control-label"></label>
+                <input asp-for="Doctor_Schedule.Chamber_Address" class="form-control" />
+                <span asp-validation-for="Doctor_Schedule.Chamber_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

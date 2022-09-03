@@ -1,0 +1,63 @@
+﻿@page
+@model National_Healthcare_System.Pages.DoctorSchedule.DetailsModel
+@using National_Healthcare_System.Utility
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Doctor_Schedule</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.Doctor_Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.Doctor_Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.Day)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.Day)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.Start_Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.Start_Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.End_Time)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.End_Time)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.Organization_Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.Organization_Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Doctor_Schedule.Chamber_Address)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Doctor_Schedule.Chamber_Address)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (!User.IsInRole(Static_Details.PatientUser))
+    {
+        <a asp-page="./Edit" asp-route-id="@Model.Doctor_Schedule.Schedule_Id">Edit</a>
+        <a asp-page="./Index">Back to List</a>
+    }
+    else
+    {
+        <a asp-page="/Views/ViewDoctorList/Index">Back to List</a>
+    }
+
+</div>

@@ -1,0 +1,123 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Profile";
+    ViewData["ActivePage"] = ManageNavPages.Index;
+}
+
+<h4>@ViewData["Title"]</h4>
+<partial name="_StatusMessage" model="Model.StatusMessage" />
+<div class="row">
+    <div class="col-md-6">
+        <form id="profile-form" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <img class="rounded rounded-circle border border-dark m-4" src="~/images/@Model.ImageName" height="200" width="200" alt="Profile Picture"  asp-append-version="true" />
+                <input asp-for="Input.ProfileImage" class="form-control" />
+                <span asp-validation-for="Input.ProfileImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Username">Email Address</label>
+                <input asp-for="Username" class="form-control" disabled />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Input.PhoneNumber"></label>
+                <input type="number" asp-for="Input.PhoneNumber" class="form-control" />
+                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.First_Name"></label>
+                <input asp-for="Input.First_Name" class="form-control" />
+                <span asp-validation-for="Input.First_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Middle_Name"></label>
+                <input asp-for="Input.Middle_Name" class="form-control" />
+                <span asp-validation-for="Input.Middle_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Last_Name"></label>
+                <input asp-for="Input.Last_Name" class="form-control" />
+                <span asp-validation-for="Input.Last_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Fathers_Name"></label>
+                <input asp-for="Input.Fathers_Name" class="form-control" />
+                <span asp-validation-for="Input.Fathers_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Father_NID_Number"></label>
+                <input type="number" asp-for="Input.Father_NID_Number" class="form-control" />
+                <span asp-validation-for="Input.Father_NID_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Mothers_Name"></label>
+                <input asp-for="Input.Mothers_Name" class="form-control" />
+                <span asp-validation-for="Input.Mothers_Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Mother_NID_Number"></label>
+                <input type="number" asp-for="Input.Mother_NID_Number" class="form-control" />
+                <span asp-validation-for="Input.Mother_NID_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.DateOfBirth"></label>
+                <input type="date" asp-for="Input.DateOfBirth" class="form-control" />
+                <span asp-validation-for="Input.DateOfBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Gender"></label>
+                <div class="select-picker">
+                    <select class="select-picker form-control my-1 mr-sm-2" asp-for="Input.Gender" id="GenderSelect">
+                        <option selected>Choose...</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Third">Third</option>
+                        <option value="Other">Other</option>
+                    </select><span asp-validation-for="Input.Gender" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Permanent_Address"></label>
+                <input asp-for="Input.Permanent_Address" class="form-control" />
+                <span asp-validation-for="Input.Permanent_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Current_Address"></label>
+                <input asp-for="Input.Current_Address" class="form-control" />
+                <span asp-validation-for="Input.Current_Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Occupation"></label>
+                <input asp-for="Input.Occupation" class="form-control" />
+                <span asp-validation-for="Input.Occupation" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Maritual_status"></label>
+                <input asp-for="Input.Maritual_status" class="form-control" />
+                <span asp-validation-for="Input.Maritual_status" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Identity_Number"></label>
+                <input type="number" asp-for="Input.Identity_Number" class="form-control" />
+                <span asp-validation-for="Input.Identity_Number" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.City"></label>
+                <input asp-for="Input.City" class="form-control" />
+                <span asp-validation-for="Input.City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Input.Blood_Group"></label>
+                <input asp-for="Input.Blood_Group" class="form-control" />
+                <span asp-validation-for="Input.Blood_Group" class="text-danger"></span>
+            </div>
+            <button id="update-profile-button" type="submit" class="btn btn-primary">Save</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,53 @@
+﻿@page
+@model National_Healthcare_System.Pages.About_UsModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        div.gallery {
+            margin: 5px;
+            border: 1px solid #ccc;
+            float: left;
+            width: 200px;
+        }
+
+            div.gallery:hover {
+                border: 1px solid #777;
+            }
+
+            div.gallery img {
+                width: 100%;
+                height:50%
+            }
+
+        div.desc {
+            padding: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h3>This website was developed by</h3>
+    <div class="gallery">
+        <a  href="https://www.facebook.com/farhan.ahmed.18.97/">
+            <img src="~/images/pic/farhan.jpg" alt="Farhan Ahmed" width="600" height="400">
+        </a>
+        <div class="desc">Farhan Ahmed<br />Dept. of CSE <br />East West University</div>
+    </div>
+
+    <div class="gallery">
+        <a href="https://www.facebook.com/simonta.chakraborty">
+            <img src="~/images/pic/chakra.jpg" alt="Simonta Charkborty" width="600" height="400">
+        </a>
+        <div class="desc">Simonta Charkborty<br />Dept. of CSE <br />East West University</div>
+    </div>
+    <div class="gallery">
+        <a href="https://www.facebook.com/basak.bijoy/">
+            <img src="~/images/pic/basak.jpg" alt="Bijoy Basak" width="600" height="400">
+        </a>
+        <div class="desc">Bijoy Basak <br />Dept. of CSE <br />East West University</div>
+    </div>
+
+</body>
+</html>

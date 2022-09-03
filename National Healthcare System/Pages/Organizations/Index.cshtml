@@ -1,0 +1,72 @@
+﻿@page
+@model National_Healthcare_System.Pages.Organizations.IndexModel
+@using National_Healthcare_System.Utility
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+@if (!User.IsInRole(Static_Details.PatientUser))
+{
+    <p>
+        <a asp-page="Create">Create New</a>
+    </p>
+}
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Organization_Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Registration_No)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Organization_Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Organization_Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Organization_Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Organization[0].Description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Organization)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization_Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Registration_No)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization_Address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization_Contact)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Organization_Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Organization_Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Organization_Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Organization_Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
